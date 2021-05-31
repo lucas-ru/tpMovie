@@ -25,7 +25,9 @@ struct MovieListResponse: Decodable {
         return results.compactMap { movieReponse -> Movie? in
             Movie(from: movieReponse)
         }
+        
     }
+    
 }
 
 struct MovieResponse: Decodable {

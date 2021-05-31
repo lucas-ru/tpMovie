@@ -80,7 +80,7 @@ extension CategoriesViewController: UICollectionViewDataSource {
             return collectionView.dequeueReusableCell(withReuseIdentifier: TitleCollectionViewCell.reuseIdentifier, for: indexPath as IndexPath) as! TitleCollectionViewCell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.reuseIdentifier, for: indexPath as IndexPath) as! CategoryCollectionViewCell
-            cell.configureWithName(name: categories[indexPath.item].name)
+            cell.configureWithName(CategoriesName: categories[indexPath.item].name)
             return cell
         }
     }

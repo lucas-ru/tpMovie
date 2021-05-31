@@ -9,9 +9,9 @@ import Foundation
 
 struct MoviesRequest {
     /**
-        Make request to MovieDB API to get movies list
+        Request to the API to get a movie list
      */
-    func getMoviesList(page: Int = 1, categoryId: Int? = nil, completion: @escaping ((MovieListResponse?) -> Void)) {
+    func getMoviesList(page: Int = 1, categoryId: Int? = nil, completion: @escaping ((MovieListResponse?) -> ())) {
         var params: [URLQueryItem] = []
         params.append(URLQueryItem(name: "page", value: "\(page)"))
         if let category = categoryId {
@@ -27,9 +27,9 @@ struct MoviesRequest {
     }
     
     /**
-        Make request to MovieDB API to get details for a specific movie
+        Request to the API to get the details of a specific movie
      */
-    func getMovieDetails(id: Int, completion: @escaping ((MovieDetailsResponse?) -> Void)) {
+    func getMovieDetails(id: Int, completion: @escaping ((MovieDetailsResponse?) -> ())) {
         var detUrl = APIManager.shared.buildUrl(path: Type.details, queryParams: [
             URLQueryItem(name: "append_to_response", value: "videos")
         ])

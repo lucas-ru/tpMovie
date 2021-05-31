@@ -18,9 +18,10 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     }
 
     
-    func configureWithName(name: String) {
-        nameLabel.text = name
+    func configureWithName(CategoriesName: String) {
+        nameLabel.text = CategoriesName
     }
+    
     
     static var nib: UINib {
         UINib(nibName: "CategoryCollectionViewCell", bundle: nil)

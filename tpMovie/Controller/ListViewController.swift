@@ -51,11 +51,8 @@ class ListViewController: UIViewController {
     func createMovieCell(_ tableView: UITableView,_ index: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.reuseIdentifier, for: index) as! MovieTableViewCell
         cell.prepareForReuse()
-        let movie = movies[index.item]
-        cell.fillDataWith(movie: movie)
-        guard let url = movie.getImageUrl() else {
-            return cell
-        }
+        let movieElement = movies[index.item]
+        cell.fillDataWith(movieElement: movieElement)
         return cell
     }
     

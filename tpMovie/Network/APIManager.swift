@@ -15,7 +15,7 @@ struct APIManager {
     let imageBaseUrl = "https://image.tmdb.org/t/p/"
     
     /**
-        Create an URLComponent object with an API Type and query params
+        Creation of the url according to the type of data to recover and to the query params
      */
     func buildUrl(path: Type, queryParams: [URLQueryItem]? = nil) -> URLComponents? {
         var url = URLComponents(string: "\(self.baseUrl)\(path.rawValue)")
@@ -31,7 +31,7 @@ struct APIManager {
 }
 
 /**
- List of used Type of the MovieDB API
+    List of the different data to recover
  */
 enum Type: String {
     case list = "/discover/movie"

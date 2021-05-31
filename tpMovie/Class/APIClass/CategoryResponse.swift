@@ -16,8 +16,7 @@ struct CategoryResponse: Decodable {
         }
         return genres.compactMap { genre -> Category? in
             Category(from: genre)
-        }
-    }
+        }    }
 }
 
 struct Genre: Decodable {

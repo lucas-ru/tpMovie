@@ -9,9 +9,9 @@ import Foundation
 
 struct CategoriesRequest {
     /**
-        Make request to MovieDB API to get categories list
+        Request to the API to get a category list
      */
-    func getCategoriesList(completion: @escaping ((CategoryResponse?) -> Void)) {
+    func getCategoriesList(completion: @escaping ((CategoryResponse?) -> ())) {
         let catUrl = APIManager.shared.buildUrl(path: Type.categories, queryParams: nil)
         if let url = catUrl?.url {
             NetworkManager.shared.fetchData(url) { data in

@@ -13,7 +13,10 @@ struct NetworkManager {
     static var shared = NetworkManager()
     let session = URLSession.shared
     
-    func fetchData(_ url: URL, completion: @escaping (Data) -> Void) -> Void {
+    /**
+        Data recovery function
+     */
+    func fetchData(_ url: URL, completion: @escaping (Data) -> ()) -> Void {
         self.session.dataTask(with: url, completionHandler: { (data, response, error) in
             guard error == nil else {
                 return

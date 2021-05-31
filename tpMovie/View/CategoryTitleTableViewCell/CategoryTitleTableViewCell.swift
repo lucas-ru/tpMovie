@@ -26,6 +26,7 @@ class CategoryTitleTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    
     static var reuseIdentifier: String {
         return "CategoryTitleTableViewCell"
     }

@@ -20,12 +20,12 @@ class MovieTableViewCell: UITableViewCell {
     }
 
     
-    func fillDataWith(movie: Movie) {
-        self.titleLabel.text = movie.title
-        if let year = movie.year {
+    func fillDataWith(movieElement: Movie) {
+        self.titleLabel.text = movieElement.title
+        if let year = movieElement.year {
             self.dateLabel.text = String(year)
         }
-        self.synopsisLabel.text = movie.synopsis
+        self.synopsisLabel.text = movieElement.synopsis
     }
     
     func displayImage(_ image: UIImage) {
