@@ -50,8 +50,8 @@ extension CategoriesViewController: UICollectionViewDelegate {
             let cell = collectionView.cellForItem(at: indexPath) as! CategoryCollectionViewCell
             cell.alpha = 0.5
             UIView.animate(
-                withDuration: 0.2,
-                delay: 0.1,
+                withDuration: 0.4,
+                delay: 0.2,
                 animations: {
                     cell.alpha = 1
             })

@@ -13,7 +13,8 @@ class ListViewController: UIViewController {
     
     private let segueIdentifier = "showDetailsSegue"
     private let moviesRepository = MoviesRequest()
-    
+    private let imageManager = ImageManager()
+
     var movies: [Movie] = []
     var category: Category?
     private var currentPage = 1
@@ -21,9 +22,9 @@ class ListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self // delegate = ListViewController because he implements the UITableViewDelegate protocol
-        tableView.dataSource = self // dataSource = ListViewController because he implements the UITableViewDataSource protocol
-        tableView.register(MovieTableViewCell.nib, forCellReuseIdentifier: MovieTableViewCell.reuseIdentifier) // link cells with MovieTableViewCell XIB
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(MovieTableViewCell.nib, forCellReuseIdentifier: MovieTableViewCell.reuseIdentifier)
         tableView.register(CategoryTitleTableViewCell.nib, forCellReuseIdentifier: CategoryTitleTableViewCell.reuseIdentifier)
         loadData(page: currentPage)
     }
@@ -53,6 +54,17 @@ class ListViewController: UIViewController {
         cell.prepareForReuse()
         let movieElement = movies[index.item]
         cell.fillDataWith(movieElement: movieElement)
+        guard let url = movieElement.getImageUrl() else {
+            return cell
+        }
+        imageManager.getImage(url: url) { image, imageUrl
+            in
+            DispatchQueue.main.async() {
+                if imageUrl ==  url.absoluteString {
+                    cell.displayImage(image)
+                }
+            }
+        }
         return cell
     }
     
@@ -95,14 +107,12 @@ extension ListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.alpha = 0
-
         UIView.animate(
-            withDuration: 0.2,
-            delay: 0.1,
+            withDuration: 0.4,
+            delay: 0.2,
             animations: {
                 cell.alpha = 1
         })
-        
         if indexPath.row == movies.count - 1 && shouldLoadMoreData {
             currentPage += 1
             loadData(page: currentPage)

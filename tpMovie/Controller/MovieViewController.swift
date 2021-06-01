@@ -22,7 +22,8 @@ class MovieViewController: UIViewController {
     var movieId: Int = 0
     var movie: Movie?
     let moviesRepository = MoviesRequest()
-    
+    let imageManager = ImageManager()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -34,6 +35,7 @@ class MovieViewController: UIViewController {
                 self.movie = movie
                 DispatchQueue.main.async() {
                     self.displayMovieInformation(movie: movie)
+                    self.displayMovieImages(movie: movie)
                 }
             }
         }
@@ -49,7 +51,7 @@ class MovieViewController: UIViewController {
     }
 
     /**
-        Populate UILabels with movie information
+        function that allows to fill in the labels for the details of a film
      */
     private func displayMovieInformation(movie: Movie) {
         titleLabel.text = movie.title
@@ -60,6 +62,19 @@ class MovieViewController: UIViewController {
         durationLabel.text = movie.getDurationAsString()
         categoriesLabel.text = movie.getCategoriesAsString()
         synopsisLabel.text = movie.synopsis
+    }
+    
+    private func displayMovieImages(movie: Movie) {
+        if let url = movie.getImageUrl() {
+            imageManager.getImage(url: url) { image, imageUrl in
+                DispatchQueue.main.async() {
+                    if imageUrl ==  url.absoluteString {
+                        self.movieImageView.image = image
+                    }
+                }
+            }
+        }
+
     }
     
 }

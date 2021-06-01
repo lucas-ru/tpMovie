@@ -34,6 +34,7 @@
 		A072F69F2664CF9000C2ABB3 /* CategoryTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A072F69E2664CF9000C2ABB3 /* CategoryTitleTableViewCell.xib */; };
 		A072F6A42664D02900C2ABB3 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072F6A32664D02900C2ABB3 /* MovieTableViewCell.swift */; };
 		A072F6A92664D03900C2ABB3 /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A072F6A82664D03900C2ABB3 /* MovieTableViewCell.xib */; };
+		A072F6AE266649F100C2ABB3 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072F6AD266649F100C2ABB3 /* ImageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		A072F69E2664CF9000C2ABB3 /* CategoryTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTitleTableViewCell.xib; sourceTree = "<group>"; };
 		A072F6A32664D02900C2ABB3 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		A072F6A82664D03900C2ABB3 /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
+		A072F6AD266649F100C2ABB3 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 				A04B9F502653C26C0089ED4D /* CategoriesRequest.swift */,
 				A04B9F2A2653BA840089ED4D /* APIManager.swift */,
 				A04B9F432653C1910089ED4D /* NetworkManager.swift */,
+				A072F6AD266649F100C2ABB3 /* ImageManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 			files = (
 				A04B9F4C2653C2570089ED4D /* MoviesRequest.swift in Sources */,
 				A04B9F2B2653BA840089ED4D /* APIManager.swift in Sources */,
+				A072F6AE266649F100C2ABB3 /* ImageManager.swift in Sources */,
 				A072F6A42664D02900C2ABB3 /* MovieTableViewCell.swift in Sources */,
 				A04B9F312653BE7E0089ED4D /* MovieDetailsResponse.swift in Sources */,
 				A04B9F8B2653E22C0089ED4D /* MovieViewController.swift in Sources */,

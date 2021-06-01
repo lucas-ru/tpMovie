@@ -2,7 +2,7 @@
 //  ImageManager.swift
 //  tpMovie
 //
-//  Created by lucas on 31/05/2021.
+//  Created by lucas on 01/06/2021.
 //
 
 import Foundation

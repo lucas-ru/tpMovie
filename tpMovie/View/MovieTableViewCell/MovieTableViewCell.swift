@@ -19,7 +19,9 @@ class MovieTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    
+    /**
+        function that allows to link the data with the elements of a scene
+     */
     func fillDataWith(movieElement: Movie) {
         self.titleLabel.text = movieElement.title
         if let year = movieElement.year {
@@ -40,7 +42,7 @@ class MovieTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     /**
-        Clear data to avoid cached data reused when an item has no data
+        function that allows to empty the labels to reuse them
      */
     override func prepareForReuse() {
         self.titleLabel.text = nil

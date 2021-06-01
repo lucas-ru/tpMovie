@@ -17,7 +17,9 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         self.layer.masksToBounds = false
     }
 
-    
+    /**
+        function which allows to name the first view via the label
+     */
     func configureWithName(CategoriesName: String) {
         nameLabel.text = CategoriesName
     }
