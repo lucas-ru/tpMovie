@@ -30,7 +30,7 @@ class ListViewController: UIViewController {
     }
     
     private func loadData(page: Int) {
-        moviesRepository.getMoviesList(page: page, categoryId: category?.id, completion: { response in
+        moviesRepository.getMoviesList(page: page, categoryId: category?.idCategory, completion: { response in
             if let movies = response {
                 self.shouldLoadMoreData = page < movies.totalPages ?? 0
                 let newData = movies.transformToMovieArray()
@@ -70,7 +70,7 @@ class ListViewController: UIViewController {
     
     func createCategoryCell(_ tableView: UITableView,_ index: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTitleTableViewCell.reuseIdentifier, for: index) as! CategoryTitleTableViewCell
-        cell.titleLabel.text = category?.name
+        cell.titleLabel.text = category?.nameCategory
         return cell
     }
     
@@ -125,7 +125,7 @@ extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.section == 1 {
-            self.performSegue(withIdentifier: segueIdentifier, sender: movies[indexPath.item].id)
+            self.performSegue(withIdentifier: segueIdentifier, sender: movies[indexPath.item].idMovie)
         }
     }
 }

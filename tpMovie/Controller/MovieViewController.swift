@@ -54,14 +54,14 @@ class MovieViewController: UIViewController {
         function that allows to fill in the labels for the details of a film
      */
     private func displayMovieInformation(movie: Movie) {
-        titleLabel.text = movie.title
-        subtitleLabel.text = movie.subtitle
-        if let year = movie.year {
-            yearLabel.text = String(year)
-        }
+        titleLabel.text = movie.titleMovie
+        subtitleLabel.text = movie.subtitleMovie
+        synopsisLabel.text = movie.synopsisMovie
+        categoriesLabel.text = movie.getTypeCatAsString()
         durationLabel.text = movie.getDurationAsString()
-        categoriesLabel.text = movie.getCategoriesAsString()
-        synopsisLabel.text = movie.synopsis
+        if let yearMovie = movie.yearMovie {
+            yearLabel.text = String(yearMovie)
+        }
     }
     
     private func displayMovieImages(movie: Movie) {

@@ -8,47 +8,49 @@
 import Foundation
 
 struct Movie {
-    var id: Int
-    var title: String
-    var subtitle: String?
-    var year: Int?
-    var duration: Int?
-    var categories: [String]?
-    var synopsis: String?
-    var imageUrl: String?
-    var posterUrl: String?
+    var idMovie: Int
+    var titleMovie: String
+    var subtitleMovie: String?
+    var synopsisMovie: String?
+    var TypeCatMovie: [String]?
+    var durationMovie: Int?
+    var yearMovie: Int?
+    var imageUrlMovie: String?
     
     init?(from movieResponse: MovieResponse) {
-        guard let id = movieResponse.id, let title = movieResponse.title, let year = movieResponse.releaseDate else {
+        guard let id = movieResponse.id,
+              let title = movieResponse.title,
+              let year = movieResponse.releaseDate else {
             return nil
-        }
-        self.id = id
-        self.title = title
-        self.year = Int(String(year.prefix(4)))
-        self.synopsis = movieResponse.overview
+                
+            }
+        self.idMovie = id
+        self.titleMovie = title
+        self.yearMovie = Int(String(year.prefix(4)))
+        self.synopsisMovie = movieResponse.overview
         if let backdrop = movieResponse.backdropPath {
-            self.imageUrl = APIManager.shared.imageBaseUrl + "w500" + backdrop
+            self.imageUrlMovie = APIManager.shared.imageBaseUrl + "w500" + backdrop
         }
+        
     }
     
     init?(from movieDetailsResponse: MovieDetailsResponse) {
         guard let id = movieDetailsResponse.id,
             let title = movieDetailsResponse.title,
-            let year = movieDetailsResponse.releaseDate,
-            let poster = movieDetailsResponse.posterPath else {
+            let year = movieDetailsResponse.releaseDate else {
             return nil
+            
         }
-        self.id = id
-        self.title = title
-        self.subtitle = movieDetailsResponse.tagline
-        self.year = Int(String(year.prefix(4)))
-        self.synopsis = movieDetailsResponse.overview
+        self.idMovie = id
+        self.titleMovie = title
+        self.subtitleMovie = movieDetailsResponse.tagline
+        self.yearMovie = Int(String(year.prefix(4)))
+        self.synopsisMovie = movieDetailsResponse.overview
         if let backdrop = movieDetailsResponse.backdropPath {
-            self.imageUrl = APIManager.shared.imageBaseUrl + "w500" + backdrop
+            self.imageUrlMovie = APIManager.shared.imageBaseUrl + "w500" + backdrop
         }
-        self.posterUrl = APIManager.shared.imageBaseUrl + "w200" + poster
-        self.duration = movieDetailsResponse.runtime
-        self.categories = movieDetailsResponse.genres?.compactMap({ genre -> String? in
+        self.durationMovie = movieDetailsResponse.runtime
+        self.TypeCatMovie = movieDetailsResponse.genres?.compactMap({ genre -> String? in
             guard let name = genre.name else {
                 return nil
             }
@@ -56,32 +58,25 @@ struct Movie {
         })
     }
     
-    func getCategoriesAsString() -> String {
-        guard let categories = self.categories else {
+    func getTypeCatAsString() -> String {
+        guard let categoriesMovie = self.TypeCatMovie else {
             return "-"
         }
-        return categories.joined(separator: ", ")
+        return categoriesMovie.joined(separator: ", ")
      }
     
     func getDurationAsString() -> String {
-        guard let duration = self.duration else {
+        guard let durationMovie = self.durationMovie else {
             return "-"
         }
-        return "\(duration) min"
+        return "\(durationMovie) min"
     }
     
     func getImageUrl() -> URL? {
-        guard let imageUrl = self.imageUrl else {
+        guard let imageUrlMovie = self.imageUrlMovie else {
             return nil
         }
-        return URL(string: imageUrl)
-    }
-    
-    func getPosterUrl() -> URL? {
-        guard let posterUrl = self.posterUrl else {
-            return nil
-        }
-        return URL(string: posterUrl)
+        return URL(string: imageUrlMovie)
     }
     
 }

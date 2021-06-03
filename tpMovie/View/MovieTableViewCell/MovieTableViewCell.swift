@@ -23,11 +23,11 @@ class MovieTableViewCell: UITableViewCell {
         function that allows to link the data with the elements of a scene
      */
     func fillDataWith(movieElement: Movie) {
-        self.titleLabel.text = movieElement.title
-        if let year = movieElement.year {
+        self.titleLabel.text = movieElement.titleMovie
+        self.synopsisLabel.text = movieElement.synopsisMovie
+        if let year = movieElement.yearMovie {
             self.dateLabel.text = String(year)
         }
-        self.synopsisLabel.text = movieElement.synopsis
     }
     
     func displayImage(_ image: UIImage) {

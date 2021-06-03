@@ -8,14 +8,14 @@
 import Foundation
 
 struct Category {
-    let id: Int
-    let name: String
+    let idCategory: Int
+    let nameCategory: String
     
     init?(from genre: Genre) {
         guard let id = genre.id, let name = genre.name else {
             return nil
         }
-        self.id = id
-        self.name = name
+        self.idCategory = id
+        self.nameCategory = name
     }
 }
